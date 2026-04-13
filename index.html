@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nox's Cafe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════ HOME ════════════════════════════════ -->
+<div id="home" class="page active">
+  <div class="home-page">
+    <h1 class="cafe-title">NOX'S CAFE</h1>
+    <p class="cafe-tagline">Where Coffee, Cats &amp; Cool Vibes Meet</p>
+    <div class="cards-row">
+      <div class="info-card" onclick="goTo('cat')">
+        <div class="card-icon">🐱</div>
+        <h3>Cat Cafe</h3>
+        <p>Enjoy your coffee with our adorable feline friends</p>
+      </div>
+      <div class="info-card" onclick="goTo('billiards')">
+        <div class="card-icon">🎱</div>
+        <h3>Billiards Lounge</h3>
+        <p>Play pool while sipping your favorite brew</p>
+      </div>
+      <div class="info-card" onclick="goTo('menu')">
+        <div class="card-icon">☕</div>
+        <h3>Premium Coffee</h3>
+        <p>Crafted with passion, served with love</p>
+      </div>
+    </div>
+    <button class="order-btn" onclick="goTo('menu')">ORDER NOW</button>
+    <p class="scan-text">Scan QR code or click to start ordering</p><br>
+    <button class="about-link-btn" onclick="goTo('about')">ABOUT US &amp; LOCATION</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ MENU ════════════════════════════════ -->
+<div id="menu-page" class="page">
+  <div class="menu-header">
+    <button class="back-btn" onclick="goTo('home')">← Back to Home</button>
+    <h1>NOX'S CAFE — Menu</h1>
+    <button class="cart-btn" onclick="openCart()" id="cart-btn-text">🛒 Cart (0)</button>
+  </div>
+  <div class="menu-body">
+    <div class="menu-section">
+      <h2>☕ Coffee</h2>
+      <div class="menu-grid" id="coffee-grid"></div>
+    </div>
+    <div class="menu-section">
+      <h2>🥤 Non-Coffee</h2>
+      <div class="menu-grid" id="noncoffee-grid"></div>
+    </div>
+    <div class="menu-section">
+      <h2>🍝 Pasta</h2>
+      <div class="menu-grid" id="pasta-grid"></div>
+    </div>
+    <div class="menu-section">
+      <h2>🍰 Snacks &amp; Desserts</h2>
+      <div class="menu-grid" id="snacks-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div id="cart-modal" style="display:none" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Your Order</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list"></div>
+    <div id="cart-footer" class="cart-footer" style="display:none">
+      <div class="cart-total"><span>Total:</span><span id="cart-total-amt">₱0</span></div>
+      <button class="checkout-btn" onclick="placeOrder()">PLACE ORDER</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ ORDER CONFIRM ════════════════════════════ -->
+<div id="confirm-page" class="page">
+  <div class="confirm-wrapper">
+    <div class="confirm-box">
+      <div class="check-icon">✓</div>
+      <h1 class="confirm-title">Order Placed Successfully!</h1>
+      <div class="order-num-box">
+        <p class="order-label">Your Order Number</p>
+        <h2 class="order-num" id="conf-order-num">000000</h2>
+        <p class="order-instr">Show this number to the cashier</p>
+      </div>
+      <div class="order-summary-box">
+        <p class="summary-title">Order Summary</p>
+        <div id="conf-items"></div>
+        <div class="summary-total"><span>Total</span><span id="conf-total">₱0</span></div>
+      </div>
+      <div class="confirm-btns">
+        <button class="home-btn" onclick="goTo('home')">BACK TO HOME</button>
+        <button class="new-order-btn" onclick="goTo('menu')">PLACE ANOTHER ORDER</button>
+      </div>
+      <div class="cafe-icons-row"><span>🐱</span><span>☕</span><span>🎱</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ CAT LOUNGE ════════════════════════════ -->
+<div id="cat-page" class="page">
+  <div class="header">
+    <button class="back-btn" onclick="goTo('home')">← Back to Home</button>
+    <div class="nav">
+      <button onclick="goTo('menu')">Menu</button>
+      <button class="active">Cat Lounge</button>
+      <button onclick="goTo('billiards')">Billiards</button>
+      <button onclick="goTo('about')">About</button>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="page-hero">
+      <h1>Cat Lounge 🐱</h1>
+      <div class="hero-img">
+        <img src="cat.jpg" alt="Cat Lounge">
+      </div>
+      <p>Welcome to Nox's Cat Lounge, where you can enjoy your favorite coffee alongside our adorable feline companions. Our cat lounge offers a unique and relaxing atmosphere perfect for cat lovers and coffee enthusiasts alike.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item"><span class="fi-icon">🐾</span><h3>Meet Our Cats</h3><p>Interact with our friendly, well-cared-for cats who love attention and playtime. Each cat has been carefully selected for their gentle temperament and social nature.</p></div>
+      <div class="feature-item"><span class="fi-icon">☕</span><h3>Sip &amp; Relax</h3><p>Enjoy your favorite beverages from our extensive menu while surrounded by purring companions. Our baristas craft each drink with care to complement your cat cafe experience.</p></div>
+      <div class="feature-item"><span class="fi-icon">📸</span><h3>Photo Opportunities</h3><p>Create lasting memories with plenty of Instagram-worthy moments. Our lounge is designed with cozy corners perfect for capturing those special cat moments.</p></div>
+      <div class="feature-item"><span class="fi-icon">🧘</span><h3>Stress Relief</h3><p>Studies show that spending time with cats reduces stress and anxiety. Take a break from your busy day and unwind in our peaceful cat lounge.</p></div>
+    </div>
+    <div class="guidelines-box">
+      <h2>Cat Lounge Guidelines</h2>
+      <ul>
+        <li>Please be gentle and respectful with our cats</li>
+        <li>Wash your hands before and after interacting with the cats</li>
+        <li>Let the cats come to you — don't force interaction</li>
+        <li>No flash photography to avoid startling the cats</li>
+        <li>Food and drinks must be kept in designated areas</li>
+        <li>Children must be supervised by adults at all times</li>
+      </ul>
+    </div>
+    <div class="cta-row">
+      <button class="primary-btn" onclick="goTo('menu')">ORDER FOOD &amp; DRINKS</button>
+      <button class="secondary-btn" onclick="goTo('about')">VISIT INFO &amp; HOURS</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ BILLIARDS ════════════════════════════ -->
+<div id="billiards-page" class="page">
+  <div class="header">
+    <button class="back-btn" onclick="goTo('home')">← Back to Home</button>
+    <div class="nav">
+      <button onclick="goTo('menu')">Menu</button>
+      <button onclick="goTo('cat')">Cat Lounge</button>
+      <button class="active">Billiards</button>
+      <button onclick="goTo('about')">About</button>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="page-hero">
+      <h1>Billiards Lounge 🎱</h1>
+      <div class="hero-img">
+        <img src="billiards.jpg" alt="Billiards Lounge">
+      </div>
+      <p>Step into Nox's Billiards Lounge, where classic pool meets contemporary cafe culture. Whether you're a seasoned player or just looking to have fun, our billiards lounge offers the perfect blend of competition and relaxation.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item"><span class="fi-icon">🎯</span><h3>Premium Tables</h3><p>Play on professional-grade pool tables with perfect felt and precision pockets. Our tables are regularly maintained to ensure the best playing experience.</p></div>
+      <div class="feature-item"><span class="fi-icon">🍺</span><h3>Drinks &amp; Snacks</h3><p>Keep your energy up with our selection of beverages and snacks. From craft coffee to refreshing drinks, we have everything you need for a great session.</p></div>
+      <div class="feature-item"><span class="fi-icon">👥</span><h3>Group Friendly</h3><p>Perfect for hanging out with friends, dates, or solo practice. Our spacious lounge accommodates groups of all sizes.</p></div>
+      <div class="feature-item"><span class="fi-icon">🎮</span><h3>All Skill Levels</h3><p>Whether you're a beginner or a pro, everyone is welcome. We provide cues and equipment for all skill levels.</p></div>
+    </div>
+    <div class="pricing-box">
+      <h2>Table Rates</h2>
+      <div class="pricing-cards">
+        <div class="price-card"><h3>Per Hour</h3><div class="price-num">₱200</div><p>Standard hourly rate</p></div>
+        <div class="price-card"><h3>3 Hours</h3><div class="price-num">₱500</div><p>Save ₱100</p></div>
+        <div class="price-card"><h3>All Day</h3><div class="price-num">₱1000</div><p>Unlimited play</p></div>
+      </div>
+    </div>
+    <div class="guidelines-box">
+      <h2>Lounge Guidelines</h2>
+      <ul>
+        <li>Please handle cues and equipment with care</li>
+        <li>No food or drinks on the pool tables</li>
+        <li>Keep the playing area clean and organized</li>
+        <li>Be respectful of other players and wait your turn</li>
+        <li>Tables must be reserved for continuous play</li>
+        <li>Ask staff for assistance if you need any equipment</li>
+      </ul>
+    </div>
+    <div class="cta-row">
+      <button class="primary-btn" onclick="goTo('menu')">ORDER FOOD &amp; DRINKS</button>
+      <button class="secondary-btn" onclick="goTo('about')">VISIT INFO &amp; HOURS</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ ABOUT ════════════════════════════ -->
+<div id="about-page" class="page">
+  <div class="header">
+    <button class="back-btn" onclick="goTo('home')">← Back to Home</button>
+    <div class="nav">
+      <button onclick="goTo('menu')">Menu</button>
+      <button onclick="goTo('cat')">Cat Lounge</button>
+      <button onclick="goTo('billiards')">Billiards</button>
+      <button class="active">About</button>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="page-hero">
+      <h1>About Nox Cafe</h1>
+      <div class="hero-img">
+        <img src="nox.jpg" alt="Billiards Lounge">
+      </div>
+      <p>Your neighborhood spot for coffee, beers, and billiards in Imus, Cavite.</p>
+    </div>
+    <div class="story-box">
+      <h2>Our Story</h2>
+      <p>Nox Cafe was born from a simple idea: create a space where people can relax, connect, and enjoy life's simple pleasures. Whether you're a coffee enthusiast, a cat lover, or a billiards player, we've crafted a unique environment that brings together the best of all worlds.</p>
+      <p>Located in the heart of Imus, Cavite, we're more than just a cafe — we're a community hub where friends meet, memories are made, and every visit feels like coming home. From our carefully curated menu to our adorable cat companions and professional billiards tables, every detail has been designed with you in mind.</p>
+    </div>
+    <div class="three-grid">
+      <div class="contact-card">
+        <div class="icon">🕐</div>
+        <h3>Hours</h3>
+        <p><strong>Monday – Friday:</strong> 7am – 11pm<br><strong>Saturday:</strong> 8am – 12am<br><strong>Sunday:</strong> 8am – 10pm</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <h3>Location</h3>
+        <p>Sarreal Village<br>Bucandala 2, Imus<br>Cavite, Philippines 4103</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h3>Contact</h3>
+        <p>Contact us for inquiries<br><strong>Email:</strong> info@noxcafe.com<br><strong>Social:</strong> Follow us @noxcafe</p>
+      </div>
+    </div>
+    <h2 class="section-title">Quick Links</h2>
+    <div class="quick-links-grid">
+      <button class="quick-link-btn" onclick="goTo('menu')"><span class="ql-icon">📋</span><span>View Menu</span></button>
+      <button class="quick-link-btn" onclick="goTo('cat')"><span class="ql-icon">🐱</span><span>Cat Lounge</span></button>
+      <button class="quick-link-btn" onclick="goTo('billiards')"><span class="ql-icon">🎱</span><span>Billiards</span></button>
+    </div>
+    <h2 class="section-title">Connect With Us</h2>
+    <div class="social-row">
+      <a href="https://www.instagram.com/noxcafe" target="_blank"><button class="social-btn">Instagram</button></a>
+      <a href="https://www.facebook.com/NoxsCafe" target="_blank"><button class="social-btn">Facebook</button></a>
+    </div>
+    <div class="footer-div">
+      <p>© 2026 Nox Cafe. All rights reserved.</p>
+      <p>We're open daily and ready to serve you</p>  
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ JAVASCRIPT ════════════════════════════ -->
+<script src="script.js"></script>
+</body>
+</html>
